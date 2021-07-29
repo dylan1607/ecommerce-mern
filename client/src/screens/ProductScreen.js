@@ -19,6 +19,11 @@ useEffect(() => {
     }
 }, [dispatch, product, match]);
 
+const AddCartHandle = () => {
+    dispatch(addToCart(product._id, qty));
+    history.push('/cart');
+};
+
     return (
         <div className='productscreen'>
             {loading ? (<h2>Loading...</h2>) : error ? (<h2>{error}</h2>) : (
@@ -29,29 +34,28 @@ useEffect(() => {
                 </div>
                 <div className='left__info'>
                     <p className='left__name'>{product.name}</p>
-                    <p className='left__price'>Price: {product.price}</p>
+                    <p className='left__price'>Price: ${product.price}</p>
                     <p className='left__description'>{product.description}</p>
                 </div>
             </div>
             <div className='productscreen__right'>
                 <div className='right__info'>
                     <p>
-                        Price: <span>$599.99</span>
+                        Price: <span>${product.price * qty}</span>
                     </p>
                     <p>
-                        Status: <span>In Stock</span>
+                        Status: <span>{product.countInStock > 0 ? 'In Stock' : 'Out Stock'}</span>
                     </p>
                     <p>
                         Qty
-                        <select>
-                            <option value='1'>1</option>
-                            <option value='2'>2</option>
-                            <option value='3'>3</option>
-                            <option value='4'>4</option>
+                        <select value={qty} onChange={(e) => setQty(e.target.value)}>
+                            {[...Array(product.countInStock).keys()].map((x) => (
+                                <option key={x+1} value={x+1}>{x+1}</option>
+                            ))}
                         </select>
                     </p>
                     <p>
-                        <button type='button'>Add To Cart</button>
+                        <button type='button' onClick={AddCartHandle}>Add To Cart</button>
                     </p>
                 </div>
             </div>
