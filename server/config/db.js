@@ -16,7 +16,7 @@ const mongoos = require('mongoose');
 // }
 
 const connectdb = async () => {
-    await mongoos.connect(process.env.MONGO_URIa, {
+    await mongoos.connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
