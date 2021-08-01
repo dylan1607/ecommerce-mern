@@ -6,6 +6,7 @@ import { useState } from 'react';
 import HomeScreen from './screens/HomeScreen';
 import CartScreen from './screens/CartScreen';
 import ProductScreen from './screens/ProductScreen';
+import LoginScreen from './screens/LoginScreen';
 
 //Components
 import Navbar from './components/Navbar';
@@ -24,14 +25,18 @@ function App() {
         <BackDrop show={sideToggle} click={() => setSideToggle(false)} />
       <main>
         <Switch>
+          {/* Render Login Screen */}
+          <Route exact path='/login' component={HomeScreen} />
+
           {/* Render HomeScreen */}
-          <Route exact path='/' component={HomeScreen} />
+          <Route exact path='/' component={LoginScreen} />
 
           {/* Render ProductScreen */}
           <Route exact path='/product/:id' component={ProductScreen} />
 
           {/* Render CartScreen */}
           <Route exact path='/cart' component={CartScreen} />
+
         </Switch>
       </main>
     </Router>

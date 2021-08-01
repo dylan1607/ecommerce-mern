@@ -47,13 +47,12 @@
 
 .cart__link {
     background: #333;
-    padding: 10px;
+    padding: 6px;
     border-radius: 8px;
 }
 
 .cart__link:hover {
-    background: #
-    ;
+    background: crimson;
     color: #f4f4f4;
 }
 
