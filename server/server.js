@@ -7,8 +7,13 @@ connectdb();
 const app = express();
 
 //Run this command app.use() in ALL request GET POST PUT
-app.use(express.json());
-app.use('/api/products', productRoutes); //any request going to routes /api/products will access productRoutes
+//Application-level Middleware
+app.use((req, res, next) => {
+    console.log(`New request at: ${Date()}`);
+    next('route');
+});
+// app.use(express.json());
+app.use('/api/products', productRoutes); //any request going to routes /api/products will access Router
 
 const PORT = process.env.PORT || 5000;
 
