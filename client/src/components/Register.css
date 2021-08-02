@@ -1,0 +1,58 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    max-width: 90%;
+    background: #171717;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.register h2 {
+    color: #ffff;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register__form > input {
+    font-size: 0.8rem;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    border: 1px solid #f2f2f2;
+    border-radius: 8px;
+}
+
+.register__form--btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.register__form--btn > button,
+.register__form--btn a {
+    font-size: 1rem;
+    color: #fff;
+    padding: 15px 30px;
+    border: 1px solid #171717;
+    border-radius: 8px;
+    background: crimson;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.register__form--btn a {
+    background: #171717;
+    text-decoration: none;
+}
+
+@media (max-width: 310px) {
+    .register__form--btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

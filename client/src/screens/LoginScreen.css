@@ -1,58 +1,15 @@
-.login {
+.screen {
     display: flex;
     flex-direction: column;
-    padding: 100px 0;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    padding: 100px 0;
 }
 
-.login .login__form {
-    max-width: 400px;
-    width: 90%;
-    padding: 30px;
-    background: #171717;
-    border-radius: 8px;
-}
-
-.login__form h2 {
-    font-size: 1.3rem;
-    color: #ffff;
-    margin-bottom: 20px;
-}
-
-.login__form > input {
-    font-size: 0.8rem;
-    width: 100%;
-    padding: 12px 20px;
-    margin: 10px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.login__form button {
-    font-size: 1rem;
-    color: #ffff;
-    padding: 15px 40px;
-    border: 1px solid #171717;
-    border-radius: 5px;
-    cursor: pointer;
-    background: #1111;
-    margin-top: 10px;
-    transition: all 0.2s ease-out;
-}
-
-.login__form button:hover {
-    transform: scale(1.1);
-    background: crimson;
-}
-
-.login .login__info {
+.screen .login__info {
     margin-top: 20px;
     max-width: 100vw;
-    width: 90%;
+    /* width: 90%; */
 }
 
 .login__info label {
@@ -62,7 +19,7 @@
     width:50%;
 }
 
-.login .login__info-box {
+.screen .login__info-box {
     display: flex;
     padding: 10px 20px;
     background: #f2f2f2;
@@ -80,9 +37,11 @@
     padding: 10px;
 }
 
-/* @media (max-width: 600px) {
-    .login .login__info-box {
+@media (max-width: 310px) {
+    .login__form--btn {
+        display: flex;
         flex-direction: column;
+        justify-content: center;
     }
-} */
+}
 
