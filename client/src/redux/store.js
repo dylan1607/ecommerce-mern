@@ -23,7 +23,6 @@ const middeware = [thunk];
 
 const store = createStore(
     reducer,
-    // initialState,
     composeWithDevTools(applyMiddleware(...middeware))
 );
 
