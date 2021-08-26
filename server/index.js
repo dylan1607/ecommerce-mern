@@ -16,7 +16,7 @@ app.use((req, res, next) => {
   next("route");
 });
 
-//any request going to routes /api/products will access Router
+//Any request going to routes /api/products will access Router
 app.use("/api/products", productRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
