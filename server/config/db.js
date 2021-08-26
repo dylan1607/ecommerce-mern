@@ -1,9 +1,9 @@
-require('dotenv').config();
-const mongoos = require('mongoose');
- 
+require("dotenv").config();
+const mongoos = require("mongoose");
+
 // const connectdb = async () => {
 //     try {
-//         await mongoos.connect(process.env.MONGO_URI, {
+//         await mongoos.connect(process.env.MONGO_URL, {
 //             useNewUrlParser: true,
 //             useUnifiedTopology: true
 //         });
@@ -16,15 +16,16 @@ const mongoos = require('mongoose');
 // }
 
 const connectdb = async () => {
-    await mongoos.connect(process.env.MONGO_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
+  await mongoos
+    .connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     })
-    .then(res => console.log('Connection Database Success !!'))
-    .catch (error => {
-        console.error('Connection Failed');
-        process.exit(1);
-    })
-}
+    .then((res) => console.log("Connection Database Success !!"))
+    .catch((error) => {
+      console.error("Failed Connection to Database");
+      process.exit(1);
+    });
+};
 
 module.exports = connectdb;
