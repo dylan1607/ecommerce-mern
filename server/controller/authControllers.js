@@ -30,7 +30,14 @@ const loginUser = async (req, res) => {
     });
     if (!user) res.status(501).json("Wrong Username or Password");
     else {
-      res.status(201).json(user);
+    //   res.status(201).json(user);
+    const bytes = crypto.AES.decrypt(user.password, process.env.SECRET_KEY);
+    const originalPassword = bytes.toString(crypto.enc.Utf8)
+    if(req.body.password !== originalPassword) res.status(501).json("Wrong Password");
+    else {
+        //After authorization granted, doing something
+        
+    }
     }
   } catch (error) {}
 };

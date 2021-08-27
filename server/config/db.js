@@ -20,8 +20,9 @@ const connectdb = async () => {
     .connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
     })
-    .then((res) => console.log("Connection Database Success !!"))
+    .then(() => console.log("Connection Database Success !!"))
     .catch((error) => {
       console.error("Failed Connection to Database");
       process.exit(1);
