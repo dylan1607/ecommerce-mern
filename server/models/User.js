@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema(
   {
     fullname: {
       type: String,
-      default: null
+      default: null,
     },
     email: {
       type: String,
@@ -22,9 +22,6 @@ const userSchema = new mongoose.Schema(
     isAdmin: {
       type: Boolean,
       default: false,
-    },
-    token: {
-      type: String,
     },
   },
   {
