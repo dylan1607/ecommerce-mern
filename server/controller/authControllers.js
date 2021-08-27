@@ -59,7 +59,7 @@ const loginUser = async (req, res) => {
             isAdmin: user.isAdmin,
           },
           process.env.SECRET_KEY,
-          { expiresIn: "1d" }
+          { expiresIn: "1h" }
         );
         const { isAdmin, password, ...info } = user._doc; //IMPORTANT: prevent response with screct field
         res.status(200).json({ ...info, accessToken });
