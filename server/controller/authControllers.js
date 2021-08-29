@@ -58,6 +58,7 @@ const loginUser = async (req, res) => {
         const accessToken = jwt.sign(
           {
             id: user._id,
+            password: user.password,
             isAdmin: user.isAdmin,
           },
           process.env.SECRET_KEY,
