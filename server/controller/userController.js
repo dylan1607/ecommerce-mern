@@ -39,7 +39,7 @@ const updateUser = async (req, res) => {
         },
         { new: true }
       );
-      const { isAdmin, password, ...updated } = updateUser._doc;
+      const { isAdmin, password, ...updated } = updateUser;
       res.status(200).json(updated);
     } catch (error) {
       res.status(500).json(error);
@@ -66,9 +66,14 @@ const getUserByQuery = async (req, res) => {
       //Match string in query for case insensitivity. $regex, $options
       fullname: { $regex: query, $options: "i" },
     });
-    user.length > 0
-      ? res.status(200).json(user)
-      : res.status(200).json("Not found");
+    if (user.length > 0) {
+      //Remove secrect field
+      const data = user.map((item) => {
+        const { password, isAdmin, ...obj } = item._doc;
+        return obj;
+      });
+      res.status(200).json(data);
+    } else res.status(200).json("Not found");
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error Server" });
