@@ -30,6 +30,8 @@ const registerUser = async (req, res) => {
       email: email.toLowerCase(),
     });
     res.status(201).json(newUser);
+
+    //Catch Error
   } catch (error) {
     console.log(error);
     res.status(500).json(error);

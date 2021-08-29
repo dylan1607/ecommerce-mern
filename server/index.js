@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 
 //Any request going to routes /api/... will access Router
 app.use("/api/auth", authRoutes);
-app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
