@@ -1,8 +1,11 @@
 import "./Login.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { loginUser } from "../redux/actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [val, setVal] = useState({
     email: null,
     pwd: null,
@@ -41,7 +44,8 @@ const Login = () => {
     if (validation.error) {
       alert(validation.msg);
     } else {
-      alert("Success!");
+      // alert("Success!");
+      dispatch(loginUser(val));
     }
   };
   return (

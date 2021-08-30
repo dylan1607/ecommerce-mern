@@ -9,7 +9,7 @@ export const userReducer = (state = { users: [] }, action) => {
       };
     case actionTypes.USER_SUCCESS:
       return {
-        loading: true,
+        loading: false,
         users: action.payload,
       };
     case actionTypes.USER_FAIL:
