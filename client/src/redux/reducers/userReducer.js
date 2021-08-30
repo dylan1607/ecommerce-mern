@@ -1,11 +1,14 @@
 import * as actionTypes from "../constants/userConstants";
 
-export const userReducer = (state = { users: [] }, action) => {
+export const userReducer = (
+  state = { users: JSON.parse(sessionStorage.getItem("user")) || null },
+  action
+) => {
   switch (action.type) {
     case actionTypes.USER_REQUEST:
       return {
         loading: true,
-        users: [],
+        users: null,
       };
     case actionTypes.USER_SUCCESS:
       return {
