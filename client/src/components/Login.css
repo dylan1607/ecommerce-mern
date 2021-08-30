@@ -28,6 +28,11 @@
   border-radius: 8px;
 }
 
+.login__form--message {
+  color: crimson;
+  font-size: 0.7rem;
+}
+
 .login__form--btn {
   display: flex;
   justify-content: space-between;

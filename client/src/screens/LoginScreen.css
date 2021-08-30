@@ -1,47 +1,63 @@
-.screen {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 100px 0;
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  max-width: 90%;
+  background: #171717;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 10px;
 }
 
-.screen .login__info {
-    margin-top: 20px;
-    max-width: 100vw;
-    /* width: 90%; */
+.login h2 {
+  color: #ffff;
+  margin-bottom: 10px;
 }
 
-.login__info label {
-    display: flex;
-    align-items: top;
-    text-align: left;
-    width:50%;
+.login__form {
+  display: flex;
+  flex-direction: column;
 }
 
-.screen .login__info-box {
-    display: flex;
-    padding: 10px 20px;
-    background: #f2f2f2;
-    margin-top: 20px;
+.login__form > input {
+  font-size: 0.8rem;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 10px 0;
+  border: 1px solid #f2f2f2;
+  border-radius: 8px;
 }
 
-.login__info-box span  {
-
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+.login__form--message {
+  color: crimson;
+  font-size: 0.7rem;
 }
 
-.login__info-box span > p {
-    padding: 10px;
+.login__form--btn {
+  display: flex;
+  justify-content: space-between;
 }
 
-@media (max-width: 310px) {
-    .login__form--btn {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+.login__form--btn > button,
+.login__form--btn a {
+  font-size: 1rem;
+  color: #fff;
+  padding: 15px 30px;
+  border: 1px solid #171717;
+  border-radius: 8px;
+  background: crimson;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
+.login__form--btn a {
+  background: #171717;
+  text-decoration: none;
+}

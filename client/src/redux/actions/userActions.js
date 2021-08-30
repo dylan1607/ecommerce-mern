@@ -19,13 +19,19 @@ export const loginUser =
       //push data to store
       dispatch({
         type: actionTypes.USER_SUCCESS,
-        payload: res.data,
+        payload: { ...res.data, isLogin: true },
       });
-      sessionStorage.setItem("user", JSON.stringify(res.data));
+      localStorage.setItem("user", JSON.stringify(res.data));
     } catch (error) {
       dispatch({
         type: actionTypes.USER_FAIL,
-        payload: error.response,
+        payload:
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.response ||
+          error.message ||
+          error.toString(),
       });
     }
   };
@@ -46,7 +52,18 @@ export const registerUser =
     } catch (error) {
       dispatch({
         type: actionTypes.USER_FAIL,
-        payload: error.response,
+        payload:
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.response ||
+          error.toString(),
       });
     }
   };
+
+export const logoutUser = () => async (dispatch) => {
+  dispatch({ type: actionTypes.USER_REQUEST });
+  localStorage.removeItem("user");
+};

@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import { loginUser } from "../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 
-const Login = () => {
+const Login = ({ history }) => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.users);
   const [val, setVal] = useState({
     email: null,
     pwd: null,
@@ -68,6 +69,9 @@ const Login = () => {
           placeholder="Password"
           onChange={handleChange}
         />
+        {user?.error && (
+          <p className="login__form--message">{user.error.data}</p>
+        )}
         <div className="login__form--btn">
           <button type="submit">Login</button>
           <Link to="/register">Register</Link>
