@@ -1,5 +1,5 @@
 import "./LoginScreen.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { loginUser } from "../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
