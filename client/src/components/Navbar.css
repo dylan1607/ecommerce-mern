@@ -99,18 +99,12 @@ navbar__links > li > span {
   background: #dd219e;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 500px) {
   .navbar__links {
     display: none;
   }
 
   .hamburger__menu {
     display: flex;
-  }
-}
-
-@media (max-width: 500px) {
-  .navbar__logo h2 {
-    font-size: 1.2rem;
   }
 }
