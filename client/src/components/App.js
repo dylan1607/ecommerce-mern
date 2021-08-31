@@ -5,13 +5,13 @@ import { useState } from "react";
 import HomeScreen from "./screens/HomeScreen";
 import CartScreen from "./screens/CartScreen";
 import ProductScreen from "./screens/ProductScreen";
+import LoginScreen from "./screens/LoginScreen";
 
 //Components
 import Navbar from "./components/Navbar";
 import BackDrop from "./components/BackDrop";
 import SideDrawer from "./components/SideDrawer";
 import Register from "./components/Register";
-import Login from "./components/Login";
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -29,7 +29,7 @@ function App() {
           <Route exact path="/" component={HomeScreen} />
 
           {/* Render LoginScreen */}
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/login" component={LoginScreen} />
 
           {/* Render RegisterScreen */}
           <Route exact path="/register" component={Register} />

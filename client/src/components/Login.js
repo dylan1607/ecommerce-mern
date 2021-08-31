@@ -1,17 +1,17 @@
 import "./Login.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { loginUser } from "../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 
-const Login = ({ history }) => {
+const LoginScreen = ({ history }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.users);
+  const users = useSelector((state) => state.users);
+  const { error, user } = users;
   const [val, setVal] = useState({
     email: null,
     pwd: null,
   });
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setVal({ ...val, [name]: value });
@@ -22,15 +22,14 @@ const Login = ({ history }) => {
       error: false,
       msg: "",
     };
-    const { email, pwd } = val;
     const vaild = /\S+@\S+\.\S+/;
-    if (!vaild.test(email)) {
+    if (!vaild.test(val.email)) {
       returnData = {
         error: true,
         msg: "Invail Email",
       };
     }
-    if (pwd.length < 1) {
+    if (val?.pwd?.length < 1) {
       returnData = {
         error: true,
         msg: "Pwd must be greater than 8 characters",
@@ -45,40 +44,44 @@ const Login = ({ history }) => {
     if (validation.error) {
       alert(validation.msg);
     } else {
-      // alert("Success!");
       dispatch(loginUser(val));
     }
   };
+
+  if (user) {
+    return <Redirect to="/" />;
+  }
+
   return (
-    <div className="login">
-      <h2>LOGIN</h2>
-      <form onSubmit={onSubmit} className="login__form">
-        <input
-          id="email"
-          type="text"
-          name="email"
-          className="login__form-user"
-          placeholder="Email"
-          onChange={handleChange}
-        />
-        <input
-          id="pwd"
-          type="password"
-          name="pwd"
-          className="login__form-user"
-          placeholder="Password"
-          onChange={handleChange}
-        />
-        {user?.error && (
-          <p className="login__form--message">{user.error.data}</p>
-        )}
-        <div className="login__form--btn">
-          <button type="submit">Login</button>
-          <Link to="/register">Register</Link>
-        </div>
-      </form>
+    <div className="wrapper">
+      <div className="login">
+        <h2>LOGIN</h2>
+        <form onSubmit={onSubmit} className="login__form">
+          <input
+            id="email"
+            type="email"
+            name="email"
+            className="login__form-user"
+            placeholder="Email"
+            onChange={handleChange}
+          />
+          <input
+            id="pwd"
+            type="password"
+            name="pwd"
+            className="login__form-user"
+            placeholder="Password"
+            onChange={handleChange}
+          />
+          {error && <p className="login__form--message">{error.data}</p>}
+          <div className="login__form--btn">
+            <button type="submit">Login</button>
+            <Link to="/register">Register</Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default Login;
+export default LoginScreen;

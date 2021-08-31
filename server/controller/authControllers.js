@@ -15,7 +15,7 @@ const registerUser = async (req, res) => {
     //Check exist user
     const user = await User.findOne({ email: email.toLowerCase() });
     if (user)
-      return res.status(409).send("User already exist. Please login instead !");
+      return res.status(409).json("User already exist. Please login instead !");
 
     //Encrypt User password
     const encryptPassword = crypto.AES.encrypt(

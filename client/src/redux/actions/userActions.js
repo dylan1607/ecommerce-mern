@@ -37,13 +37,14 @@ export const loginUser =
   };
 
 export const registerUser =
-  (emailRequest, passwordRequest, nameRequest) => async (dispatch) => {
+  ({ name, email, pwd }) =>
+  async (dispatch) => {
     try {
       dispatch({ type: actionTypes.USER_REQUEST });
       const res = await axios.post(`/api/auth/register`, {
-        fullname: nameRequest,
-        email: emailRequest,
-        password: passwordRequest,
+        fullname: name,
+        email: email,
+        password: pwd,
       });
       dispatch({
         type: actionTypes.USER_SUCCESS,
@@ -56,8 +57,8 @@ export const registerUser =
           (error.response &&
             error.response.data &&
             error.response.data.message) ||
-          error.message ||
           error.response ||
+          error.message ||
           error.toString(),
       });
     }
