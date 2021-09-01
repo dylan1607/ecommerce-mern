@@ -41,7 +41,7 @@ const Register = () => {
       alert(validation.msg);
     } else {
       dispatch(registerUser(input));
-
+    
     }
   };
   return (

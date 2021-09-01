@@ -48,7 +48,7 @@ const LoginScreen = ({ history }) => {
     }
   };
 
-  if (user) {
+  if (user?.isLogin) {
     return <Redirect to="/" />;
   }
 
